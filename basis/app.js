@@ -17,27 +17,27 @@ app.get("/:id/" , (req , res)=> {
     res.status(200).json({givenId : id})
 })
 
-app.post("/scrape/" , async (req , res)=> {
-    console.log(req.body);
-    const {prompt} = req.body;
-    console.log(prompt)
-    try {
-        const resultsList = await startScraping(prompt);
-        if(resultsList.ok) {
-            console.log("retrieved successfully");
-        console.log(resultsList.scrapedDataList)
-        console.log("in server");
-        res.status(200).json({ok : true , searchResults : resultsList.scrapedDataList})
-        }
-        else {
-            res.status(400).json({ok : false , errorMsg : "server side , document not loaded , Please try again"})
-        }
-    }
-    catch(e) {
-        console.log("document not loaded");
-        res.status(400).json({ok : false , errorMsg : "server side , document not loaded , Please try again"});
-    }
-})
+// app.post("/scrape/" , async (req , res)=> {
+//     console.log(req.body);
+//     const {prompt} = req.body;
+//     console.log(prompt)
+//     try {
+//         const resultsList = await startScraping(prompt);
+//         if(resultsList.ok) {
+//             console.log("retrieved successfully");
+//         console.log(resultsList.scrapedDataList)
+//         console.log("in server");
+//         res.status(200).json({ok : true , searchResults : resultsList.scrapedDataList})
+//         }
+//         else {
+//             res.status(400).json({ok : false , errorMsg : "server side , document not loaded , Please try again"})
+//         }
+//     }
+//     catch(e) {
+//         console.log("document not loaded");
+//         res.status(400).json({ok : false , errorMsg : "server side , document not loaded , Please try again"});
+//     }
+// })
 
 
 app.listen(5000 , ()=> {
